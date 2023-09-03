@@ -1,0 +1,33 @@
+[package]
+name = "psp22"
+version = "0.1.0"
+authors = ["Piotr swierzy", "Maciek Malik"]
+edition = "2021"
+
+[dependencies]
+ink = { version = "4.3", default-features = false }
+
+scale = { package = "parity-scale-codec", version = "3", default-features = false, features = ["derive"] }
+scale-info = { version = "2.5", default-features = false, features = ["derive"], optional = true }
+
+[dev-dependencies]
+ink_e2e = { version = "4.3" }
+
+[lib]
+path = "psp22.rs"
+
+[features]
+default = ["mintable", "burnable", "pausable", "capped", "metadata"]
+mintable = ["modifier"]
+burnable = ["modifier"]
+pausable = ["modifier"]
+metadata = []
+capped = []
+modifier =[]
+std = [
+    "ink/std",
+    "scale/std",
+    "scale-info/std",
+]
+ink-as-dependency = []
+e2e-tests = []
